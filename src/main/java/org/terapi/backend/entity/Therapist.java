@@ -6,6 +6,7 @@ import jakarta.persistence.Convert;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -51,21 +52,24 @@ public class Therapist extends User {
     @OneToMany(
             mappedBy = "therapist",
             cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE },
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
     )
     private List<Schedule> schedules;
 
     @OneToMany(
             mappedBy = "therapist",
             cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
     )
     private List<Review> reviews;
 
     @OneToMany(
             mappedBy = "therapist",
             cascade = { CascadeType.PERSIST, CascadeType.MERGE },
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.LAZY
     )
     private Set<Appointment> appointments;
 }
