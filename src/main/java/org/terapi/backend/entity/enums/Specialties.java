@@ -9,9 +9,9 @@ public enum Specialties {
     OCCUPATIONAL_THERAPY("Terapia ocupacional"),
     SPEECH_THERAPY("Logopedia");
 
-    private final String SpanishLabel;
+    private final String spanishLabel;
 
     Specialties(String spanishLabel) {
-        this.SpanishLabel = spanishLabel;
+        this.spanishLabel = spanishLabel;
     }
 }

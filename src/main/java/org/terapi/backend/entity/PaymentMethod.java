@@ -7,6 +7,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -41,4 +43,8 @@ public class PaymentMethod {
     private DocumentType documentType;
     @Column(name = "numero_documento" , nullable = false)
     private String documentNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "paciente_id")
+    private Patient patient;
 }

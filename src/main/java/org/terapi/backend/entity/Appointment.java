@@ -7,6 +7,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +36,7 @@ public class Appointment {
     private LocalDate date;
     @Column(name = "hora", nullable = false)
     private LocalTime time;
-    @Column(name = "tipo_cita", nullable = false)
+    @Column(name = "tipo", nullable = false)
     @Enumerated(EnumType.STRING)
     private AppointmentStatus appointmentStatus;
     @Column(name = "tarifa", nullable = false)
@@ -44,4 +46,12 @@ public class Appointment {
     @Column(name = "modalidad", nullable = false)
     @Enumerated(EnumType.STRING)
     private Mode mode;
+
+    @ManyToOne
+    @JoinColumn(name = "paciente_id")
+    private Patient patient;
+
+    @ManyToOne
+    @JoinColumn(name = "terapeuta_id")
+    private Therapist therapist;
 }
