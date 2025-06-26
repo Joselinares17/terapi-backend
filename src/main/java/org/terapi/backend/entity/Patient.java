@@ -3,7 +3,6 @@ package org.terapi.backend.entity;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -32,10 +31,18 @@ public class Patient extends User {
             orphanRemoval = true
     )
     private Set<Appointment> appointments;
+
     @OneToMany(
             mappedBy = "patient",
             cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE},
             orphanRemoval = true
     )
     private Set<PaymentMethod> paymentMethods;
+
+    @OneToMany(
+            mappedBy = "patient",
+            cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.MERGE},
+            orphanRemoval = true
+    )
+    private Set<Review> reviews;
 }

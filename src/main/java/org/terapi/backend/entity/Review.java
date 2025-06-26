@@ -38,4 +38,8 @@ public class Review {
     @ManyToOne
     @JoinColumn(name = "terapeuta_id")
     private Therapist therapist;
+
+    @ManyToOne
+    @JoinColumn(name = "paciente_id")
+    private Patient patient;
 }
