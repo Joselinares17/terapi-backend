@@ -9,4 +9,7 @@ services:
       POSTGRES_PASSWORD: mipassword
       POSTGRES_DB: db_terapi
     volumes:
-      - ./datos:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
